@@ -1,3 +1,4 @@
+from doctest import TestResults
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,6 +20,7 @@ try:
     username = driver.find_element(By.ID, 'j_username')
     password = driver.find_element(By.ID, 'j_password')
     login_button = driver.find_element(By.NAME, 'submit')
+   
     
     username.send_keys("panida.oun")
     password.send_keys("panida.oun")
@@ -42,11 +44,18 @@ try:
     # คลิกที่ไอคอนแบบฟอร์มขอสรรหา
     form_icon.click()
     print("\033[1;32mเข้าสู่หน้าแบบฟอร์มขอสรรหาได้สำเร็จ!\033[0m")
+
+
     
 except TimeoutException:
-    print("\033[1;31mทดสอบล้มเหลว: ไม่พบองค์ประกอบที่กำหนดภายในเวลาที่กำหนด.\033[0m")
+    print("\033[1;31mทดสอบล้มเหลว: จักเป็นแม่มันหยัง.\033[0m")
 except NoSuchElementException as e:
     print(f"\033[1;31mทดสอบล้มเหลว: {e}\033[0m")
 finally:
     input("กด Enter เพื่อปิดเบราว์เซอร์...")
     driver.quit()
+
+
+
+
+    
