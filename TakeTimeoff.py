@@ -35,6 +35,9 @@ try:
     password.send_keys("panida.oun")
     driver.WebDriverWait(driver, 10)
 
+    # คลิกปุ่ม Login
+    
+
     
 finally:
     input("กดปุ่ม Enter เพื่อจบการทำงาน...")

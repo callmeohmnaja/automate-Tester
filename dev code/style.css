@@ -1,0 +1,76 @@
+/* Reset และกำหนดค่าเบื้องต้น */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* สไตล์สำหรับ Navigation */
+nav {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* สไตล์สำหรับหัวข้อ */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+/* สไตล์สำหรับรูปภาพ */
+.map-image {
+    display: block;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* สไตล์สำหรับกลุ่มปุ่ม */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+font white with center {
+    color: white;
+    text-align: center;
+}

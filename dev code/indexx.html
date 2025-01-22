@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airathiwat's World</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: deepskyblue;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: deepskyblue;
+        }
+        input {
+            margin: 10px;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid deepskyblue;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 0 5px deepskyblue;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: darkgreen;
+            transform: scale(1.05);
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: lightgreen;
+            font-weight: bold;
+        }
+        footer {
+            margin-top: 30px;
+            padding: 10px 0;
+            background-color: #222;
+            color: gray;
+            font-size: 14px;
+        }
+        footer a {
+            color: deepskyblue;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="indexx.html">Home</a>
+        <a href="about_me.html">About</a>
+        <a href="#services">Services</a>
+        <a href="contacl.html">Contact</a>
+    </nav>
+    <h1 >Welcome to My World</h1>
+    <p>Nice to meet you! Let's explore.</p>
+
+    <input type="text" name="name" id="name" placeholder="Enter your name">
+    <input type="email" name="email" id="email" placeholder="Enter your email">
+    <input type="tel" name="phone" id="phone" placeholder="Enter your phone"> 
+
+    <button onclick="displayInput()">Submit</button>
+    <p id="result"></p>
+    <a href="about_me.html">Go to About Page</a>
+
+    <footer>
+        <p>© 2025 Airathiwat's World. All rights reserved. | <a href="privacy_policy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        function displayInput() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (name && email && phone) {
+                document.getElementById('result').textContent = 
+                    `Hello, ${name}! We have your email as ${email} and phone number as ${phone}.`;
+            } else {
+                document.getElementById('result').textContent = 
+                    "Please fill out all the fields!";
+            }
+        }
+    </script>
+</body>
+</html>
