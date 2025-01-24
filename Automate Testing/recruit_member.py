@@ -17,7 +17,7 @@ try:
     password.send_keys("dusit.bua")
     login.click()
 
-    
+
     driver.implicitly_wait(10) #load
 
 
@@ -31,10 +31,16 @@ try:
     add_button = driver.find_element(By.CLASS_NAME, 'grid-action-add')
     add_button.click()
    
-    driver.implicitly_wait(10)
-
+    driver.implicitly_wait(20)
     
+    iframe = driver.find_element(By.ID, 'formGridFrame_formgrid_tableSub_2477467')
+    iframe.click()
+
+    inputID = driver.find_element(By.NAME, 'field46_frHrRecruitNewSub2Aj_requestCount')
+    inputID.click()
+    inputID.send_keys("5")
+    inputID.submit()
+
 finally:
     input("กดปุ่ม Enter เพื่อจบการทำงาน...")
-    driver.quit()
-
+    driver.quit() # ปิด driver
