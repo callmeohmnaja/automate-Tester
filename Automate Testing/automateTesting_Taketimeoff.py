@@ -25,9 +25,9 @@ try:
 
     
     if "้home" in driver.current_url:
-        print("Login Fail")
+        print("เข้าสู่ระบบไม่สำเร็จ")
     else:
-        print("Login Success")
+        print("เข้าสูาระบบสำเร็จ")
 
    
     driver.get("http://172.26.3.11:8080/jw/web/userview/gd_SelfService/gdSelfService/_/welcome")
@@ -49,10 +49,13 @@ try:
     print("เลือกประเภทการลา: ลาป่วย สำเร็จ")
 
     why = driver.find_element(By.ID, 'dueTo')
-    why.send_keys("เป็นไข้")
+    why.send_keys("ทดสอบเป็นไข้")
 
-    input("กด Enter เพื่อออก")
-
+    
+    # completeButton = driver.find_element(By.ID,'assignmentComplete')
+    # completeButton.click()
+    
+    
 finally:
-  
+    input("กด Enter เพื่อออก")
     driver.quit()
