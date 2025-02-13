@@ -34,6 +34,8 @@ try:
     username.send_keys("dusit.bua")
     password.send_keys("dusit.bua")
     driver.WebDriverWait(driver, 10)
+    
+
 
 
 finally:
