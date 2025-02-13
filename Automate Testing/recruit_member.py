@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from time import sleep
 
 driver = webdriver.Chrome()
 
@@ -23,26 +22,43 @@ try:
     print("คลิกปุ่ม Add สำเร็จ")
 
     try:
-        iframe = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.TAG_NAME, "iframe"))
-        )
+        iframe = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "iframe")))
         driver.switch_to.frame(iframe)
         print("สลับไปยัง iframe สำเร็จ")
-    except Exception as e:
-        print(f"ไม่พบ iframe: {e}")
+    except Exception:
+        print("ไม่พบ iframe หรือไม่จำเป็นต้องสลับ")
 
     try:
-        radio_button = WebDriverWait(driver, 60).until(
+        radio_button = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//input[@name='methodRecruit' and @value='1']"))
         )
-        print("พบ radio button ใน DOM")
+        driver.execute_script("arguments[0].checked = true;", radio_button)
+        driver.execute_script("arguments[0].dispatchEvent(new Event('change'));", radio_button)
+        print("เลือก radio button สำเร็จ")
     except Exception as e:
-        print(f"ไม่พบ radio button ใน DOM: {e}")
-        raise
+        print(f"ไม่พบ radio button: {e}")
 
-    driver.execute_script("arguments[0].checked = true;", radio_button)
-    driver.execute_script("arguments[0].dispatchEvent(new Event('change'));", radio_button)
-    print("เลือก radio button ด้วย JavaScript สำเร็จ")
+    try:
+        requestAge = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'requestAge')))
+        requestAge.send_keys("23")
+        print("กรอกอายุขั้นต่ำสำเร็จ")
+    except Exception as e:
+        print(f"ไม่พบช่องกรอกอายุขั้นต่ำ: {e}")
+
+    try:
+        requestAgeEnd = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'requestAgeEnd')))
+        driver.execute_script("arguments[0].value = '49';", requestAgeEnd)
+        driver.execute_script("arguments[0].dispatchEvent(new Event('input'));", requestAgeEnd)
+        print("กรอกอายุสูงสุดสำเร็จ")
+    except Exception as e:
+        print(f"ไม่พบช่องกรอกอายุสูงสุด: {e}")
+
+    try:
+        requestRemark = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, 'requestRemark')))
+        requestRemark.send_keys("ทดสอบการเพิ่มเงื่อนไขการรับสมัครพนักงาน")
+        print("กรอกข้อความเพิ่มเติมสำเร็จ")
+    except Exception as e:
+        print(f"ไม่พบช่องกรอกข้อความเพิ่มเติม: {e}")
 
 except Exception as e:
     print(f"เกิดข้อผิดพลาด: {e}")
