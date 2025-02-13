@@ -7,26 +7,21 @@ from time import sleep
 driver = webdriver.Chrome()
 
 try:
-    # เปิดหน้า Login
     driver.get("http://172.26.3.11:8080/jw/web/login")
     driver.maximize_window()
 
-    # Login
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'j_username'))).send_keys("dusit.bua")
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, 'j_password'))).send_keys("dusit.bua")
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.NAME, 'submit'))).click()
     print("เข้าสู่ระบบสำเร็จ")
 
-    # เปิดหน้า
     driver.implicitly_wait(10)
     driver.get("http://172.26.3.11:8080/jw/web/userview/HRM_Recruitment/v/_/Welcome")
     driver.get("http://172.26.3.11:8080/jw/web/userview/HRM_Recruitment/v/_/5B4BCB9413D64BF0ACABA4F66F302079?_action=assignmentView&activityId=7227407_49404_HRM_Recruitment_process64_activity1")
 
-    # คลิกปุ่ม Add
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, 'grid-action-add'))).click()
     print("คลิกปุ่ม Add สำเร็จ")
 
-    # ตรวจสอบ iframe
     try:
         iframe = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.TAG_NAME, "iframe"))
@@ -36,7 +31,6 @@ try:
     except Exception as e:
         print(f"ไม่พบ iframe: {e}")
 
-    # รอ radio button
     try:
         radio_button = WebDriverWait(driver, 60).until(
             EC.presence_of_element_located((By.XPATH, "//input[@name='methodRecruit' and @value='1']"))
@@ -46,7 +40,6 @@ try:
         print(f"ไม่พบ radio button ใน DOM: {e}")
         raise
 
-    #radio button
     driver.execute_script("arguments[0].checked = true;", radio_button)
     driver.execute_script("arguments[0].dispatchEvent(new Event('change'));", radio_button)
     print("เลือก radio button ด้วย JavaScript สำเร็จ")
