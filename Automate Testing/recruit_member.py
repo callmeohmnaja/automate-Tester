@@ -21,7 +21,7 @@ try:
     login.click()
 
     driver.implicitly_wait(10)
-    driver.get('https://erp.gistda.or.th/jw/web/userview/appcenter/JogetGistda/_/home')
+    driver.get('http://172.26.3.11:8080/jw/web/userview/appcenter/JogetGistda/_/home')
     driver.get('http://172.26.3.11:8080/jw/web/userview/HRM_Recruitment/v/_/5B4BCB9413D64BF0ACABA4F66F302079?_action=assignmentView&activityId=7233129_50409_HRM_Recruitment_process64_activity1')
 
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, 'grid-action-add'))).click()
@@ -36,7 +36,7 @@ try:
 
     try:
         radio_button = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//input[@name='methodRecruit' and @value='2']"))
+            EC.presence_of_element_located((By.XPATH, "//input[@name='methodRecruit' and @value='1']")) #ป้อนคค่าใดค่าหนึ่ง {1,2,3}
         )
         driver.execute_script("arguments[0].checked = true;", radio_button)
         driver.execute_script("arguments[0].dispatchEvent(new Event('change'));", radio_button)
@@ -131,8 +131,10 @@ except Exception as e:
     remarkCriterionPoint.send_keys("ทดสอบการกรอกเกณฑ์คะแนนสำเร็จ")
     print(Fore.GREEN + "✅ กรอกข้อความเพิ่มเติมสำเร็จ")
 
+    add = driver.find_element(By.ID, 'grid-action-add')
+    add.click()
+    print(Fore.GREEN + "✅ คลิกปุ่ม Add สำเร็จ")
+    
 finally:
     input(Fore.CYAN + "📌 กดปุ่ม Enter เพื่อจบการทำงาน...")
     driver.quit()
-
-    #เหลือแก้ข้อมูลนิดหน่อย

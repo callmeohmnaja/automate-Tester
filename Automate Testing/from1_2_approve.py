@@ -18,9 +18,7 @@ login.click()
 
 driver.implicitly_wait(10)
 
-driver.get('https://erp.gistda.or.th/jw/web/userview/appcenter/JogetGistda/_/home')
 driver.get('http://172.26.3.11:8080/jw/web/userview/HRM_Recruitment/v/_/Welcome')
-
 
 input('Press Enter to continue...')
 driver.quit()
