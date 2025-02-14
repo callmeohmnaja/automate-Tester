@@ -4,24 +4,25 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from colorama import init, Fore
 
+#ระบบสรรหาพนักง๊าน รูปแบบที่หนึ่ง
 init(autoreset=True)  # เปิดใช้งาน colorama
 
 driver = webdriver.Chrome()
 
 try: 
-    driver.get('http://172.26.3.11:8080/jw/web/login')
+    driver.get('http://172.26.3.11:8080/jw/web/login') #getเว็บไซต์
 
     username = driver.find_element(By.ID, 'j_username')
     password = driver.find_element(By.ID, 'j_password')
     login = driver.find_element(By.NAME, 'submit')
 
-    username.send_keys('dusit.bua')
-    password.send_keys('dusit.bua')
+    username.send_keys('dusit.bua') # กรอก username
+    password.send_keys('dusit.bua') # กรอก password
     login.click()
 
     driver.implicitly_wait(10)
-    driver.get('http://172.26.3.11:8080/jw/web/userview/HRM_Recruitment/v/_/Welcome')
-    driver.get('http://172.26.3.11:8080/jw/web/userview/HRM_Recruitment/v/_/5B4BCB9413D64BF0ACABA4F66F302079?_action=assignmentView&activityId=7232825_50376_HRM_Recruitment_process64_activity1')
+    driver.get('https://erp.gistda.or.th/jw/web/userview/appcenter/JogetGistda/_/home')
+    driver.get('http://172.26.3.11:8080/jw/web/userview/HRM_Recruitment/v/_/5B4BCB9413D64BF0ACABA4F66F302079?_action=assignmentView&activityId=7233129_50409_HRM_Recruitment_process64_activity1')
 
     WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, 'grid-action-add'))).click()
     print(Fore.GREEN + "✅ คลิกปุ่ม Add สำเร็จ")
@@ -35,7 +36,7 @@ try:
 
     try:
         radio_button = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//input[@name='methodRecruit' and @value='1']"))
+            EC.presence_of_element_located((By.XPATH, "//input[@name='methodRecruit' and @value='3']"))
         )
         driver.execute_script("arguments[0].checked = true;", radio_button)
         driver.execute_script("arguments[0].dispatchEvent(new Event('change'));", radio_button)
@@ -126,7 +127,10 @@ try:
 except Exception as e:
     print(Fore.RED + f"❌ ไม่พบช่องเกณฑ์คะแนนสอบเขียน: {e}")
 
+    remarkCriterionPoint = driver.find_element(By.ID, 'remarkCriterionPoint')
+    remarkCriterionPoint.send_keys("ทดสอบการกรอกเกณฑ์คะแนนสำเร็จ")
+    print(Fore.GREEN + "✅ กรอกข้อความเพิ่มเติมสำเร็จ")
+
 finally:
-    print(Fore.CYAN + "📌 กดปุ่ม Enter เพื่อจบการทำงาน...")
-    input()
+    input(Fore.CYAN + "📌 กดปุ่ม Enter เพื่อจบการทำงาน...")
     driver.quit()
