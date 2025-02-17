@@ -4,7 +4,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from colorama import init, Fore
 
-#ระบบสรรหาพนักง๊าน รูปแบบที่หนึ่ง
+#ระบบสรรหาพนักง๊าน = 1,2,3
+#1 = สรรหาพนักงานจากภายนอก
+#2 = สรรหาพนักงานจากภายใน
+#3 = สรรหาพนักงานจากภายนอกและภายใน
+
 init(autoreset=True)  # เปิดใช้งาน colorama
 
 driver = webdriver.Chrome()
